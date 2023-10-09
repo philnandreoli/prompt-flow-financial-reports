@@ -1,0 +1,7 @@
+system:
+	1. Identify any companies that are in the question.
+	2. For each company identified, obtain their stock symbol and append it to a JSON Object with the property called stockSymbols.   The result should be an array of stock symbols.
+	3. Determine what date information is in the request.  The date information property should be dateInformation and should have the following properites if it is in the question: latest and year.  If any values are null then do not include.  If latest is in the question then the value should be true.
+	4. Determine what type of financial report is being asked to analyze if it is in the question.  The only valid values are 10-Q, 10-K or UNKNOWN.  The property that is part of the JSON object should be called financialReportType.
+user:
+	What is the stock symbol, date and latest information and what report are they looking for is in the question: {{question}}

@@ -1,0 +1,334 @@
+{
+    "package": {
+        "promptflow.tools.serpapi.SerpAPI.search": {
+            "name": "Serp API",
+            "description": "Use Serp API to obtain search results from a specific search engine.",
+            "inputs": {
+                "connection": {
+                    "type": [
+                        "SerpConnection"
+                    ]
+                },
+                "engine": {
+                    "default": "google",
+                    "enum": [
+                        "google",
+                        "bing"
+                    ],
+                    "type": [
+                        "string"
+                    ]
+                },
+                "location": {
+                    "default": "",
+                    "type": [
+                        "string"
+                    ]
+                },
+                "num": {
+                    "default": "10",
+                    "type": [
+                        "int"
+                    ]
+                },
+                "query": {
+                    "type": [
+                        "string"
+                    ]
+                },
+                "safe": {
+                    "default": "off",
+                    "enum": [
+                        "active",
+                        "off"
+                    ],
+                    "type": [
+                        "string"
+                    ]
+                }
+            },
+            "type": "python",
+            "module": "promptflow.tools.serpapi",
+            "class_name": "SerpAPI",
+            "function": "search",
+            "package": "promptflow-tools",
+            "package_version": "0.1.0b6"
+        },
+        "promptflow.tools.embedding.embedding": {
+            "name": "Embedding",
+            "description": "Use Open AI's embedding model to create an embedding vector representing the input text.",
+            "type": "python",
+            "module": "promptflow.tools.embedding",
+            "function": "embedding",
+            "inputs": {
+                "connection": {
+                    "type": [
+                        "AzureOpenAIConnection",
+                        "OpenAIConnection"
+                    ]
+                },
+                "deployment_name": {
+                    "type": [
+                        "string"
+                    ],
+                    "enabled_by": "connection",
+                    "enabled_by_type": [
+                        "AzureOpenAIConnection"
+                    ],
+                    "capabilities": {
+                        "completion": false,
+                        "chat_completion": false,
+                        "embeddings": true
+                    },
+                    "model_list": [
+                        "text-embedding-ada-002",
+                        "text-search-ada-doc-001",
+                        "text-search-ada-query-001"
+                    ]
+                },
+                "model": {
+                    "type": [
+                        "string"
+                    ],
+                    "enabled_by": "connection",
+                    "enabled_by_type": [
+                        "OpenAIConnection"
+                    ],
+                    "enum": [
+                        "text-embedding-ada-002",
+                        "text-search-ada-doc-001",
+                        "text-search-ada-query-001"
+                    ]
+                },
+                "input": {
+                    "type": [
+                        "string"
+                    ]
+                }
+            },
+            "package": "promptflow-tools",
+            "package_version": "0.1.0b6"
+        },
+        "promptflow_vectordb.tool.vector_db_lookup.VectorDBLookup.search": {
+            "name": "Vector DB Lookup",
+            "description": "Search vector based query from existing Vector Database.",
+            "type": "python",
+            "module": "promptflow_vectordb.tool.vector_db_lookup",
+            "class_name": "VectorDBLookup",
+            "function": "search",
+            "inputs": {
+                "connection": {
+                    "type": [
+                        "CognitiveSearchConnection",
+                        "QdrantConnection",
+                        "WeaviateConnection"
+                    ]
+                },
+                "index_name": {
+                    "type": [
+                        "string"
+                    ],
+                    "enabled_by": "connection",
+                    "enabled_by_type": [
+                        "CognitiveSearchConnection"
+                    ]
+                },
+                "collection_name": {
+                    "type": [
+                        "string"
+                    ],
+                    "enabled_by": "connection",
+                    "enabled_by_type": [
+                        "QdrantConnection"
+                    ]
+                },
+                "class_name": {
+                    "type": [
+                        "string"
+                    ],
+                    "enabled_by": "connection",
+                    "enabled_by_type": [
+                        "WeaviateConnection"
+                    ]
+                },
+                "text_field": {
+                    "default": null,
+                    "type": [
+                        "string"
+                    ],
+                    "enabled_by": "connection",
+                    "enabled_by_type": [
+                        "CognitiveSearchConnection",
+                        "QdrantConnection",
+                        "WeaviateConnection"
+                    ]
+                },
+                "vector_field": {
+                    "default": null,
+                    "type": [
+                        "string"
+                    ],
+                    "enabled_by": "connection",
+                    "enabled_by_type": [
+                        "CognitiveSearchConnection"
+                    ]
+                },
+                "search_params": {
+                    "default": null,
+                    "type": [
+                        "object"
+                    ],
+                    "enabled_by": "connection",
+                    "enabled_by_type": [
+                        "CognitiveSearchConnection",
+                        "QdrantConnection"
+                    ]
+                },
+                "search_filters": {
+                    "default": null,
+                    "type": [
+                        "object"
+                    ],
+                    "enabled_by": "connection",
+                    "enabled_by_type": [
+                        "CognitiveSearchConnection",
+                        "QdrantConnection"
+                    ]
+                },
+                "vector": {
+                    "type": [
+                        "list"
+                    ]
+                },
+                "top_k": {
+                    "default": "3",
+                    "type": [
+                        "int"
+                    ]
+                }
+            },
+            "package": "promptflow-vectordb",
+            "package_version": "0.1.2"
+        },
+        "promptflow_vectordb.tool.faiss_index_lookup.FaissIndexLookup.search": {
+            "name": "Faiss Index Lookup",
+            "description": "Search vector based query from the FAISS index file.",
+            "type": "python",
+            "module": "promptflow_vectordb.tool.faiss_index_lookup",
+            "class_name": "FaissIndexLookup",
+            "function": "search",
+            "inputs": {
+                "path": {
+                    "type": [
+                        "string"
+                    ]
+                },
+                "vector": {
+                    "type": [
+                        "list"
+                    ]
+                },
+                "top_k": {
+                    "default": "3",
+                    "type": [
+                        "int"
+                    ]
+                }
+            },
+            "package": "promptflow-vectordb",
+            "package_version": "0.1.2"
+        },
+        "promptflow_vectordb.tool.vector_index_lookup.VectorIndexLookup.search": {
+            "name": "Vector Index Lookup",
+            "description": "Search text or vector based query from AzureML Vector Index.",
+            "type": "python",
+            "module": "promptflow_vectordb.tool.vector_index_lookup",
+            "class_name": "VectorIndexLookup",
+            "function": "search",
+            "inputs": {
+                "path": {
+                    "type": [
+                        "string"
+                    ]
+                },
+                "query": {
+                    "type": [
+                        "object"
+                    ]
+                },
+                "top_k": {
+                    "default": "3",
+                    "type": [
+                        "int"
+                    ]
+                }
+            },
+            "package": "promptflow-vectordb",
+            "package_version": "0.1.2"
+        }
+    },
+    "code": {
+        "chat.jinja2": {
+            "type": "llm",
+            "inputs": {
+                "question": {
+                    "type": [
+                        "string"
+                    ]
+                }
+            },
+            "source": "chat.jinja2"
+        },
+        "format_filter_criteria_for_search.py": {
+            "type": "python",
+            "inputs": {
+                "search_result": {
+                    "type": [
+                        "string"
+                    ]
+                }
+            },
+            "source": "format_filter_criteria_for_search.py",
+            "function": "format_filter_criteria_for_search"
+        },
+        "generate_prompt_context.py": {
+            "type": "python",
+            "inputs": {
+                "search_result": {
+                    "type": [
+                        "object"
+                    ]
+                }
+            },
+            "source": "generate_prompt_context.py",
+            "function": "generate_prompt_context"
+        },
+        "prompt_variants.jinja2": {
+            "type": "prompt",
+            "inputs": {
+                "question": {
+                    "type": [
+                        "string"
+                    ]
+                },
+                "contexts": {
+                    "type": [
+                        "string"
+                    ]
+                }
+            },
+            "source": "prompt_variants.jinja2"
+        },
+        "answer_the_question_with_context.jinja2": {
+            "type": "llm",
+            "inputs": {
+                "prompt_context": {
+                    "type": [
+                        "string"
+                    ]
+                }
+            },
+            "source": "answer_the_question_with_context.jinja2"
+        }
+    }
+}
